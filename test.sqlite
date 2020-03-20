@@ -7,3 +7,16 @@ select email from users where test='bears';
 select email from users where campaign LIKE 'BBB%';
 select email from users where campaign like '%-2%';
 select email from users where campaign IS NOT NULL and test IS NOT NULL;
+
+
+--WorldPopulation2
+select * from countries;
+select * from population_years;
+select count(*) from countries where continent='Africa';
+--select count(*) from countries join population_years on population_years.country_id = countries.id where name='Oceania';
+select round(sum(population),2) AS 'Oceania population'from population_years join countries on countries.id = population_years.country_id where countries.continent='Oceania' and year = 2005;
+select ROUND(avg(population),2) from population_years join countries on countries.id = population_years.country_id where countries.continent ='South America' and year = 2003;
+select countries.name, min(population) from population_years join countries on countries.id = population_years.country_id where year = 2007;
+select round(avg(population),2) from population_years join countries on countries.id = population_years.country_id where countries.name='Poland';
+select distinct count(name) from countries where name like '%The%';
+select distinct continent,round(sum(population),2) from population_years join countries on countries.id = population_years.country_id where year=2010 group by 1 order by 2;
